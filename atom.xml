@@ -6,7 +6,7 @@
   <link href="https://magi2b0y.github.io/atom.xml" rel="self"/>
   
   <link href="https://magi2b0y.github.io/"/>
-  <updated>2022-06-30T12:12:13.840Z</updated>
+  <updated>2022-07-01T02:26:13.842Z</updated>
   <id>https://magi2b0y.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习--KNN算法</title>
+    <link href="https://magi2b0y.github.io/2022/06/30/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-KNN%E7%AE%97%E6%B3%95/"/>
+    <id>https://magi2b0y.github.io/2022/06/30/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-KNN%E7%AE%97%E6%B3%95/</id>
+    <published>2022-06-30T11:16:42.000Z</published>
+    <updated>2022-07-01T02:26:13.842Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot; class=&quot;headerlink&quot; title=&quot;1. 概述&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="Python" scheme="https://magi2b0y.github.io/categories/Python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
