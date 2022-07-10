@@ -189,7 +189,7 @@
 <p>KNN算法可以说是最简单的分类算法之一，同时，它也是最常用的分类算法之一，该算法是给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的K个实例，这K个实例的多数属于某个类，就把该输入实例分类到这个类中，类似于现实生活中少数服从多数的思想。</p>
 <p>下面通过一个简单的例子说明一下：如下图，绿色圆要被决定赋予哪个类，是红色三角形还是蓝色四方形？如果K=3，由于红色三角形所占比例为2/3，绿色圆将被赋予红色三角形那个类，如果K=5，由于蓝色四方形比例为3/5，因此绿色圆被赋予蓝色四方形类。</p>
 <div class="center">
-<img src="/2022/06/30/Machine_Learning--KNN_algorithm/1-1.png" height="300" width="330">
+<img src="/2022/06/30/Machine_Learning--KNN_algorithm/1-1.png">
 </div>
 <h2 id="2-算法流程">2. 算法流程</h2>
 <p>在训练集中数据和标签已知的情况下，输入测试数据，将测试数据的特征与训练集中对应的特征进行相互比较，找到训练集中与之最为相似的前K个数据，则该测试数据对应的类别就是K个数据中出现次数最多的那个分类，其算法的描述为：</p>
@@ -248,6 +248,7 @@
 <li>对不相关的功能和数据规模敏感</li>
 </ul>
 <h2 id="4-KNN算法的应用">4. KNN算法的应用</h2>
+<p><strong>开发样例：</strong> &lt;&gt;</p>
 <p>在实现为用户推荐相似好友、生成每首歌的相似音乐和为用户提供推荐音乐三个功能上应用到了KNN算法</p>
 <p><strong>数据源：</strong> 数据库中所有用户的听歌记录</p>
 <p><strong>数据结果：</strong> 为所有用户生成相似好友，为每首歌生成相似歌曲，最后根据每首歌的相似歌曲和用户听歌记录来为用户提供推荐音乐</p>
@@ -305,6 +306,49 @@
 <img src="/2022/06/30/Machine_Learning--KNN_algorithm/4-3.png">
 </div>
 <hr>
+<p>在文章最后，介绍一下github开源项目不同 license 的具体含义</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th>license</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache</td>
+<td>使用这个协议可以进行商用，可以对其修改、分发，但是要声明作者来源和你的修改以及协议。很多大型项目都使用这个协议，比如 tensorflow、puppeteer。</td>
+</tr>
+<tr>
+<td>MIT</td>
+<td>这是个人用得比较多的协议，因为比较宽松精简，只要声明版权和协议就可以了，可以商用、修改、复制、重新发布等操作。使用这个协议的就有vue、react等</td>
+</tr>
+<tr>
+<td>BSD</td>
+<td>这个和 MIT 协议类似，但未经事先明确书面许可，不得使用版权所有者的姓名或其贡献者的姓名来认可或推广从本软件衍生的产品，其它基本操作都可以使用。flask 用的就是这个协议。</td>
+</tr>
+<tr>
+<td>GNU</td>
+<td>可以私用也可以商用，但是必须声明来源，并且需要声明原有的协议，以及你的代码也必须开源出来。我们很熟悉的 Linux 就是采用这种协议。</td>
+</tr>
+<tr>
+<td>NO</td>
+<td>就是什么都不声明，但是并不意味着就可以乱来，这比声明了协议还严格。你可以使用、商用，但是你需要声明协议和来源，而且，你不能对代码进行修改、复制、再次发布。</td>
+</tr>
+<tr>
+<td>Eclipse</td>
+<td>这个协议允许你商用、复制、修改、再次发布等，需要声明来源和协议。像 java 中的 junit4 就是使用这个协议。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>以下以一张图来简单概述协议之间的区别：</p>
+<div class="center">
+<img src="/2022/06/30/Machine_Learning--KNN_algorithm/4-5.png">
+</div>
+<p>更加详细的说明请查看 <a target="_blank" rel="noopener" href="https://opensource.org/licenses/alphabetical">https://opensource.org/licenses/alphabetical</a></p>
+<hr>
 <p>ENDฅฅ</p>
 
       </div>
@@ -337,6 +381,11 @@
               
           </div>
           <div class="post-foot-prev">
+            
+              <a href="/2022/07/08/Software-supply-chain-security/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
             
           </div>
         </div>

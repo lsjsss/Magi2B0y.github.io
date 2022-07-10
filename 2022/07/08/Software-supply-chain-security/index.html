@@ -11,7 +11,7 @@
   
   <title>
     
-      归档 
+      Software_supply_chain_security 
       
       
       |
@@ -111,50 +111,168 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Software_supply_chain_security</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2022-07-08 11:25:59
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" title="网络安全">
+                    <b>#</b> 网络安全
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <style>
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<h2 id="1-概念">1.概念</h2>
+<p>供应链攻击是一种危害和破坏性极强的网络攻击，是针对组织供应链（上游、中游、下游）中的薄弱环节实施的网络安全攻击，涉及范围广，且难以检测。</p>
+<p>如今，软件的依赖关系非常普遍。 经常见到项目使用数百个开源依赖项来实现某种功能，而项目作者不必亲自编写该功能。这可能意味着大多数应用程序都包含并非项目作者创作的代码。第三方或开源依赖项中可能存在的漏洞多半是依赖项，因为项目作者不能像自己编写的代码那样严格控制这些依赖项，可能会在软件供应链中产生潜在的安全风险。</p>
+<p>举个软件供应链攻击的例子：当恶意代码被故意加入依赖项中，使用该依赖项的供应链将代码分发给受害者时，就会发生这种攻击。 供应链攻击是真实存在的。攻击供应链的方法有很多：从直接以新贡献者的身份插入恶意代码到在别人不注意的情况下接管贡献者的帐户，甚至破解签名密钥来分发不属于正式依赖项的软件。软件供应链攻击本身很少是最终目标，但提供了一个让攻击者插入恶意软件或为将来的访问提供后门的机会。</p>
+<p>软件供应链包括三个阶段：软件研发阶段、软件交付阶段、软件使用阶段，不同阶段的攻击面如下：</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>攻击面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>软件研发阶段</td>
+<td>- IDE开发工具污染攻击<br> - 三方库漏洞和后门攻击<br> - 直接源码污染攻击</td>
+</tr>
+<tr>
+<td>软件交付阶段</td>
+<td>- 软件存储替换和篡改攻击<br> - 传输劫持和捆绑下载攻击</td>
+</tr>
+<tr>
+<td>软件使用阶段</td>
+<td>- 升级劫持污染攻击<br> - 运行环境后门和漏洞攻击<br> - 三方库0Day漏洞攻击</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id></h2>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/06/30/Machine_Learning--KNN_algorithm/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2022-07-08 11:25:59
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" title="网络安全">
+                        <b>#</b> 网络安全
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="Software_supply_chain_security">
-        <div class="time-m-d">07-08</div>
-        <div class="title">
-          <a href="/2022/07/08/Software-supply-chain-security/">
-            <span>Software_supply_chain_security</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="机器学习--KNN算法">
-        <div class="time-m-d">06-30</div>
-        <div class="title">
-          <a href="/2022/06/30/Machine_Learning--KNN_algorithm/">
-            <span>机器学习--KNN算法</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">04-08</div>
-        <div class="title">
-          <a href="/2022/04/08/hello-world/">
-            <span>Hello World</span>
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text"></span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -408,6 +526,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Software_supply_chain_security + '&url=' + https%3A%2F%2Fmagi2b0y.github.io%2F2022%2F07%2F08%2FSoftware-supply-chain-security%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://magi2b0y.github.io/2022/07/08/Software-supply-chain-security/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
