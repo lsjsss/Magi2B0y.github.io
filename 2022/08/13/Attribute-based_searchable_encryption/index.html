@@ -11,9 +11,9 @@
   
   <title>
     
-      Category 
+      基于属性的可搜索加密 
       
-       : 网络安全
+      
       |
     
      Hexo
@@ -111,39 +111,117 @@
 
 
       <div class="flex-container">
-        <!-- 标签详情页，展示某个标签下的文章列表，url形式：https://yoursite/tags/某个标签/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<div class="container category-details">
-  <div class="content-title">
-    <h2>
-      <span>网络安全</span>
-    </h2>
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">基于属性的可搜索加密</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2022-08-13 21:44:07
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E5%8F%AF%E6%90%9C%E7%B4%A2%E5%8A%A0%E5%AF%86/" title="可搜索加密">
+                    <b>#</b> 可搜索加密
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/07/08/Software-supply-chain-security/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2022-08-13 21:44:07
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E5%8F%AF%E6%90%9C%E7%B4%A2%E5%8A%A0%E5%AF%86/" title="可搜索加密">
+                        <b>#</b> 可搜索加密
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2022/08/20/Common-attack-tools-Commands/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+
+    
   </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="常用攻击工具命令">
-        <span class="time-m-d">2022-08-20</span>
-        <a href="/2022/08/20/Common-attack-tools-Commands/">
-          <span>常用攻击工具命令</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="软件供应链安全">
-        <span class="time-m-d">2022-07-08</span>
-        <a href="/2022/07/08/Software-supply-chain-security/">
-          <span>软件供应链安全</span>
-        </a>
-      </div>
-    </div>
-  
-  <nav class="post-navigation">
-    
-    <span class="page-num">1 / 1</span>
-    
-  </nav>
-</div>
+
 
         
 <div class="footer">
@@ -397,6 +475,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E5%9F%BA%E4%BA%8E%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8F%AF%E6%90%9C%E7%B4%A2%E5%8A%A0%E5%AF%86 + '&url=' + https%3A%2F%2Fmagi2b0y.github.io%2F2022%2F08%2F13%2FAttribute-based_searchable_encryption%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://magi2b0y.github.io/2022/08/13/Attribute-based_searchable_encryption/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
