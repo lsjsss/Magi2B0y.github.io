@@ -6,7 +6,7 @@
   <link href="https://magi2b0y.github.io/atom.xml" rel="self"/>
   
   <link href="https://magi2b0y.github.io/"/>
-  <updated>2022-08-28T01:46:55.665Z</updated>
+  <updated>2022-09-02T01:35:30.992Z</updated>
   <id>https://magi2b0y.github.io/</id>
   
   <author>
@@ -17,11 +17,59 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>渗透经验总结</title>
+    <link href="https://magi2b0y.github.io/2022/09/02/Penetration-experience-summary/"/>
+    <id>https://magi2b0y.github.io/2022/09/02/Penetration-experience-summary/</id>
+    <published>2022-09-02T01:35:01.000Z</published>
+    <updated>2022-09-02T01:35:30.992Z</updated>
+    
+    
+    
+    
+    <category term="网络安全" scheme="https://magi2b0y.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>利用python重构NMAP的服务版本扫描模块</title>
+    <link href="https://magi2b0y.github.io/2022/08/29/NMAP-of-Python-refactoring/"/>
+    <id>https://magi2b0y.github.io/2022/08/29/NMAP-of-Python-refactoring/</id>
+    <published>2022-08-29T10:40:06.000Z</published>
+    <updated>2022-09-04T13:27:22.758Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;style&gt;
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+&lt;/style&gt;
+&lt;h1&gt;1. NMAP 扫描原理&lt;/h1&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="Python" scheme="https://magi2b0y.github.io/categories/Python/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>常用攻击工具命令</title>
     <link href="https://magi2b0y.github.io/2022/08/20/Common-attack-tools-Commands/"/>
     <id>https://magi2b0y.github.io/2022/08/20/Common-attack-tools-Commands/</id>
     <published>2022-08-20T10:59:21.000Z</published>
-    <updated>2022-08-28T01:46:55.665Z</updated>
+    <updated>2022-09-02T08:47:38.251Z</updated>
     
     
       
@@ -133,7 +181,7 @@
     <link href="https://magi2b0y.github.io/2022/04/08/hello-world/"/>
     <id>https://magi2b0y.github.io/2022/04/08/hello-world/</id>
     <published>2022-04-07T16:54:00.000Z</published>
-    <updated>2022-06-30T12:12:13.840Z</updated>
+    <updated>2022-09-01T10:30:34.212Z</updated>
     
     
       
