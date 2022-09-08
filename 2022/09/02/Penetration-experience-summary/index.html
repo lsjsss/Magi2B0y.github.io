@@ -176,7 +176,25 @@
           
       </div>
       <div class="markdown-body">
-        
+        <h1>1. 资产搜集</h1>
+<p>扫描目录，获得后台登录界面</p>
+<h1>2. 漏洞寻找</h1>
+<h2 id="2-1-登陆界面">2.1. 登陆界面</h2>
+<h3 id="2-1-1-手工尝试弱口令、SQL注入">2.1.1. 手工尝试弱口令、SQL注入</h3>
+<p><strong>弱口令：</strong> admin/admin, admin/123456, test/123456, 111/111, admin/空密码</p>
+<p><strong>SQL注入：</strong> 引号, 万能密码</p>
+<h3 id="2-1-2-确定开发模板，寻找已知漏洞">2.1.2. 确定开发模板，寻找已知漏洞</h3>
+<p><strong>OA系统：</strong> 致远OA、 泛微OA、 通达OA、 用友OA</p>
+<p><strong>CMS系统：</strong> 织梦cms、 帝国cms、 phpcms</p>
+<p>尝试默认密码</p>
+<h3 id="2-1-3-F12-观察-js-代码里泄露的敏感信息">2.1.3. F12 观察 js 代码里泄露的敏感信息</h3>
+<p>寻找 js 代码里泄露的密码、目录、具体文件，可能存在密码泄露、未授权访问等漏洞</p>
+<p>针对网站框架固有的漏洞，如 webpack 打包工具可能还原打包前的 js 源码</p>
+<h3 id="2-1-4-尝试是否存在逻辑漏洞">2.1.4. 尝试是否存在逻辑漏洞</h3>
+<p>修改返回包的参数</p>
+<h3 id="2-1-5-爆破账户名、密码">2.1.5. 爆破账户名、密码</h3>
+<p>拥有一个品质上好的字典</p>
+
       </div>
       
         <div class="prev-or-next">
@@ -213,6 +231,23 @@
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">1. 资产搜集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">2. 漏洞寻找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2"><span class="toc-text">2.1. 登陆界面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E6%89%8B%E5%B7%A5%E5%B0%9D%E8%AF%95%E5%BC%B1%E5%8F%A3%E4%BB%A4%E3%80%81SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">2.1.1. 手工尝试弱口令、SQL注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-%E7%A1%AE%E5%AE%9A%E5%BC%80%E5%8F%91%E6%A8%A1%E6%9D%BF%EF%BC%8C%E5%AF%BB%E6%89%BE%E5%B7%B2%E7%9F%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">2.1.2. 确定开发模板，寻找已知漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-F12-%E8%A7%82%E5%AF%9F-js-%E4%BB%A3%E7%A0%81%E9%87%8C%E6%B3%84%E9%9C%B2%E7%9A%84%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-text">2.1.3. F12 观察 js 代码里泄露的敏感信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-4-%E5%B0%9D%E8%AF%95%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E"><span class="toc-text">2.1.4. 尝试是否存在逻辑漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-5-%E7%88%86%E7%A0%B4%E8%B4%A6%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81"><span class="toc-text">2.1.5. 爆破账户名、密码</span></a></li></ol></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
   </div>

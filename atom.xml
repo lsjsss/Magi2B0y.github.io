@@ -6,7 +6,7 @@
   <link href="https://magi2b0y.github.io/atom.xml" rel="self"/>
   
   <link href="https://magi2b0y.github.io/"/>
-  <updated>2022-09-02T01:35:30.992Z</updated>
+  <updated>2022-09-08T11:43:40.546Z</updated>
   <id>https://magi2b0y.github.io/</id>
   
   <author>
@@ -21,8 +21,20 @@
     <link href="https://magi2b0y.github.io/2022/09/02/Penetration-experience-summary/"/>
     <id>https://magi2b0y.github.io/2022/09/02/Penetration-experience-summary/</id>
     <published>2022-09-02T01:35:01.000Z</published>
-    <updated>2022-09-02T01:35:30.992Z</updated>
+    <updated>2022-09-08T11:43:40.546Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;1. 资产搜集&lt;/h1&gt;
+&lt;p&gt;扫描目录，获得后台登录界面&lt;/p&gt;
+&lt;h1&gt;2. 漏洞寻找&lt;/h1&gt;
+&lt;h2 id=&quot;2-1-登陆界面&quot;&gt;2.1. 登陆界面&lt;/h2&gt;
+&lt;h3 id=&quot;2-1-1-手工尝试弱口令、SQL注入&quot;&gt;2.1.1.</summary>
+        
+      
     
     
     
@@ -36,7 +48,7 @@
     <link href="https://magi2b0y.github.io/2022/08/29/NMAP-of-Python-refactoring/"/>
     <id>https://magi2b0y.github.io/2022/08/29/NMAP-of-Python-refactoring/</id>
     <published>2022-08-29T10:40:06.000Z</published>
-    <updated>2022-09-04T13:27:22.758Z</updated>
+    <updated>2022-09-04T23:42:01.393Z</updated>
     
     
       
@@ -69,7 +81,7 @@
     <link href="https://magi2b0y.github.io/2022/08/20/Common-attack-tools-Commands/"/>
     <id>https://magi2b0y.github.io/2022/08/20/Common-attack-tools-Commands/</id>
     <published>2022-08-20T10:59:21.000Z</published>
-    <updated>2022-09-02T08:47:38.251Z</updated>
+    <updated>2022-09-05T01:25:45.404Z</updated>
     
     
       
