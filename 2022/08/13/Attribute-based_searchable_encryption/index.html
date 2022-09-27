@@ -176,7 +176,42 @@
           
       </div>
       <div class="markdown-body">
-        
+        <style>
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<h1>1. 基于身份的加密(Identity-Based Encryption，IBE)</h1>
+<h2 id="1-1-概念">1.1. 概念</h2>
+<p>基于身份加密技术是为了解决公钥加密算法中数字证书管理的困难性而提出的，基于身份加密技术使用用户的身份 ( 如 ID 和邮箱等 ) 作为公钥，由可信的第三方（PKG）产生用户的私钥。基于身份加密技术是一种公钥加密技术，用于指定接收者的身份信息，可实现身份鉴别、消息加密、数字签名和协商会话密钥。</p>
+<h2 id="1-2-算法">1.2. 算法</h2>
+<p>a)系统初始化算法setup。该算法的输入是安全参数k，输出是系统参数params和主密钥msk。该算法由PKG执行。</p>
+<p>b)私钥生成算法keyGen。该算法的输入是params、主密钥msk和身份ID，输出是ID对应的私钥d。该算法由PKG执行。</p>
+<p>c)加密算法encrypt。该算法的输入是params、身份ID和消息M，输出是密文C。该算法由加密者执行。</p>
+<p>d)解密算法decrypt。该算法的输入是params、密文C和私钥d，输出是消息M。该算法由解密者执行。</p>
+<h1>2. 基于角色的访问控制(Role-Based Access Control，RBA)</h1>
+<h2 id="2-1-概念">2.1. 概念</h2>
+<p>基于角色的访问控制，就是用户通过角色与权限进行关联。简单地说，一个用户拥有若干角色，每一个角色拥有若干权限。这样，就构造成“用户-角色-权限”的授权模型。在这种模型中，用户与角色之间，角色与权限（功能）之间，一般都是多对多的关系。</p>
+<h1>3. 基于属性的加密(Attribute-based encryption，ABE)</h1>
+<h2 id="3-1-概念">3.1 概念</h2>
+<p>2006年，Goyal V, Pandey A, Sahai A, Waters B在the 13th ACM Conf. on Computer and Communications Security会议上提出了基于属性加密的概念， Sahai A, Waters B提出了第一个基于属性加密方案。其概念如下图所示：</p>
+<div class="center">
+<img src="/2022/08/13/Attribute-based_searchable_encryption/3-1.png">
+</div>
+<p>数据拥有者需要制定一条仅有这n个用户才能满足的访问策略，接着输入公共参数PP、该条策略以及明文文件至ABE加密算法，进行加密一次，形成唯一一份密文。得到密文后，数据拥有者将该份密文分别发送给n个不同的用户。</p>
+<h2 id="3-2-KP-ABE方案">3.2. KP-ABE方案</h2>
+<p>KP-ABE（Key Policy Attribute-based Encryption，基于密钥策略的属性加密）方案是将策略嵌入到密钥中，属性嵌入到密文中，包含一下四个算法：</p>
+<ul>
+<li>**Setup(γ,U)：**以安全参数γγ和属性全集U作为输入，初始化系统并生成系统公共参数pk及主密钥mk；</li>
+<li>**KeyGen(pk,mk,T)：**以系统公共参数pk、主密钥mk以及用户的访问策略T为输入，输出与T对应的用户私钥SKTSKT；</li>
+<li>**Encrypt(pk,w,m)：**以系统公共参数pk、属性集合w以及明文m为输入，输出密文CTwCTw；</li>
+<li>**Decrypt(pk,SKT,CTw)：**以系统公共参数pk、用户私钥SKTSKT及密文CTwCTw为输入，当且仅当CTwCTw对应的属性集合w满足SKTSKT对应的访问控制策略T时，算法输出明文m。</li>
+</ul>
+
       </div>
       
         <div class="prev-or-next">
@@ -218,6 +253,23 @@
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">1. 基于身份的加密(Identity-Based Encryption，IBE)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E7%AE%97%E6%B3%95"><span class="toc-text">1.2. 算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">2. 基于角色的访问控制(Role-Based Access Control，RBA)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1. 概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">3. 基于属性的加密(Attribute-based encryption，ABE)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">3.1 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-KP-ABE%E6%96%B9%E6%A1%88"><span class="toc-text">3.2. KP-ABE方案</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
   </div>

@@ -6,7 +6,7 @@
   <link href="https://magi2b0y.github.io/atom.xml" rel="self"/>
   
   <link href="https://magi2b0y.github.io/"/>
-  <updated>2022-09-08T11:43:40.546Z</updated>
+  <updated>2022-09-14T11:14:46.136Z</updated>
   <id>https://magi2b0y.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://magi2b0y.github.io/2022/09/02/Penetration-experience-summary/"/>
     <id>https://magi2b0y.github.io/2022/09/02/Penetration-experience-summary/</id>
     <published>2022-09-02T01:35:01.000Z</published>
-    <updated>2022-09-08T11:43:40.546Z</updated>
+    <updated>2022-09-14T11:14:46.136Z</updated>
     
     
       
@@ -29,10 +29,8 @@
         
         
     <summary type="html">&lt;h1&gt;1. 资产搜集&lt;/h1&gt;
-&lt;p&gt;扫描目录，获得后台登录界面&lt;/p&gt;
-&lt;h1&gt;2. 漏洞寻找&lt;/h1&gt;
-&lt;h2 id=&quot;2-1-登陆界面&quot;&gt;2.1. 登陆界面&lt;/h2&gt;
-&lt;h3 id=&quot;2-1-1-手工尝试弱口令、SQL注入&quot;&gt;2.1.1.</summary>
+&lt;h2 id=&quot;1-1-利用FOFA，云悉等搜集web资产，并查看各种开发模板、组件版本等信息&quot;&gt;1.1. 利用FOFA，云悉等搜集web资产，并查看各种开发模板、组件版本等信息&lt;/h2&gt;
+&lt;h2</summary>
         
       
     
@@ -114,8 +112,25 @@
     <link href="https://magi2b0y.github.io/2022/08/13/Attribute-based_searchable_encryption/"/>
     <id>https://magi2b0y.github.io/2022/08/13/Attribute-based_searchable_encryption/</id>
     <published>2022-08-13T13:44:07.000Z</published>
-    <updated>2022-08-29T04:26:01.744Z</updated>
+    <updated>2022-09-27T12:44:08.421Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;style&gt;
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+&lt;/style&gt;
+&lt;h1&gt;1. 基于身份的加密(Identity-Based</summary>
+        
+      
     
     
     
@@ -161,7 +176,7 @@
     <link href="https://magi2b0y.github.io/2022/06/30/Machine_Learning--KNN_algorithm/"/>
     <id>https://magi2b0y.github.io/2022/06/30/Machine_Learning--KNN_algorithm/</id>
     <published>2022-06-30T11:16:42.000Z</published>
-    <updated>2022-08-29T10:40:24.089Z</updated>
+    <updated>2022-09-27T10:02:49.826Z</updated>
     
     
       
@@ -193,7 +208,7 @@
     <link href="https://magi2b0y.github.io/2022/04/08/hello-world/"/>
     <id>https://magi2b0y.github.io/2022/04/08/hello-world/</id>
     <published>2022-04-07T16:54:00.000Z</published>
-    <updated>2022-09-01T10:30:34.212Z</updated>
+    <updated>2022-09-15T04:50:53.613Z</updated>
     
     
       
