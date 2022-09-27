@@ -197,20 +197,32 @@
 <h2 id="2-1-概念">2.1. 概念</h2>
 <p>基于角色的访问控制，就是用户通过角色与权限进行关联。简单地说，一个用户拥有若干角色，每一个角色拥有若干权限。这样，就构造成“用户-角色-权限”的授权模型。在这种模型中，用户与角色之间，角色与权限（功能）之间，一般都是多对多的关系。</p>
 <h1>3. 基于属性的加密(Attribute-based encryption，ABE)</h1>
-<h2 id="3-1-概念">3.1 概念</h2>
+<h2 id="3-1-概念">3.1. 概念</h2>
 <p>2006年，Goyal V, Pandey A, Sahai A, Waters B在the 13th ACM Conf. on Computer and Communications Security会议上提出了基于属性加密的概念， Sahai A, Waters B提出了第一个基于属性加密方案。其概念如下图所示：</p>
 <div class="center">
 <img src="/2022/08/13/Attribute-based_searchable_encryption/3-1.png">
 </div>
 <p>数据拥有者需要制定一条仅有这n个用户才能满足的访问策略，接着输入公共参数PP、该条策略以及明文文件至ABE加密算法，进行加密一次，形成唯一一份密文。得到密文后，数据拥有者将该份密文分别发送给n个不同的用户。</p>
 <h2 id="3-2-KP-ABE方案">3.2. KP-ABE方案</h2>
-<p>KP-ABE（Key Policy Attribute-based Encryption，基于密钥策略的属性加密）方案是将策略嵌入到密钥中，属性嵌入到密文中，包含一下四个算法：</p>
+<p>KP-ABE（Key Policy Attribute-based Encryption，基于密钥策略的属性加密）方案是将策略嵌入到密钥中，属性嵌入到密文中，密钥对应于一个访问结构而密文对应于一个属性集合，解密当且仅当属性集合中的属性能够满足此访问策略。这种设计比较接近静态场景，此时密文用与其相关的属性加密存放在服务器上，当允许用户得到某些消息时，就分配一个特定的访问策略给用户，其应用场景则更加偏向于付费视频网站、日志加密管理等等。如果用户想解密多个文件，那么他必须拥有多个可以满足匹配的秘钥，否则不能解密多个文件。其包含一下四个算法：</p>
 <ul>
-<li>**Setup(γ,U)：**以安全参数γγ和属性全集U作为输入，初始化系统并生成系统公共参数pk及主密钥mk；</li>
-<li>**KeyGen(pk,mk,T)：**以系统公共参数pk、主密钥mk以及用户的访问策略T为输入，输出与T对应的用户私钥SKTSKT；</li>
-<li>**Encrypt(pk,w,m)：**以系统公共参数pk、属性集合w以及明文m为输入，输出密文CTwCTw；</li>
-<li>**Decrypt(pk,SKT,CTw)：**以系统公共参数pk、用户私钥SKTSKT及密文CTwCTw为输入，当且仅当CTwCTw对应的属性集合w满足SKTSKT对应的访问控制策略T时，算法输出明文m。</li>
+<li><strong>Setup(γ,U)</strong>：以安全参数γ和属性全集U作为输入，初始化系统并生成系统公共参数pk及主密钥mk；</li>
+<li><strong>KeyGen(pk,mk,T)</strong>：以系统公共参数pk、主密钥mk以及用户的访问策略T为输入，输出与T对应的用户私钥SKT；</li>
+<li><strong>Encrypt(pk,w,m)</strong>：以系统公共参数pk、属性集合w以及明文m为输入，输出密文CTw；</li>
+<li><strong>Decrypt(pk,SKT,CTw)</strong>：以系统公共参数pk、用户私钥SKT及密文CTw为输入，当且仅当CTw对应的属性集合w满足SKT对应的访问控制策略T时，算法输出明文m。</li>
 </ul>
+<h2 id="3-3-CP-ABE">3.3. CP-ABE</h2>
+<p>CP-ABE（Ciphertext Policy Attribute-based Encryption，基于密文策略的属性加密），是将策略嵌入到密文中，属性嵌入到密钥中，CP-ABE由于策略嵌入密文中，这就意味着数据拥有者可以通过设定策略去决定拥有哪些属性的人能够访问这份密文，也就相当于对这份数据做了一个粒度可以细化到属性级别的加密访问控制，CP-ABE的应用场景一般是公有云上的数据加密存储与细粒度共享。其包含一下四个算法：</p>
+<ul>
+<li><strong>Setup(γ,U)</strong>：以安全参数γ和属性全集U作为输入，输出系统公共参数pk及主密钥mk；</li>
+<li><strong>KeyGen(pk,mk,w)</strong>：输入系统公共参数pk、主密钥mk以及用户属性集合w，输出与w对应的用户私钥SKw；</li>
+<li><strong>Encrypt(pk,T,m)</strong>：以系统公共参数pk、访问控制策略T以及明文m为输入，输出密文CTT；</li>
+<li><strong>Decrypt(pk,SKw,CTT)</strong>：以系统公共参数pk、用户私钥SKw及密文CTT为输入，当且仅当SKw对应的属性集合w满足CTT对应的访问控制策略T时，输出明文m。</li>
+</ul>
+<hr>
+<h1>参考文章：</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40279192/article/details/120970286">https://blog.csdn.net/qq_40279192/article/details/120970286</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/HLchaochao/article/details/111832381">https://blog.csdn.net/HLchaochao/article/details/111832381</a></p>
 
       </div>
       
@@ -260,7 +272,7 @@
     <div class="title">目录</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">1. 基于身份的加密(Identity-Based Encryption，IBE)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E7%AE%97%E6%B3%95"><span class="toc-text">1.2. 算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">2. 基于角色的访问控制(Role-Based Access Control，RBA)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1. 概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">3. 基于属性的加密(Attribute-based encryption，ABE)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">3.1 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-KP-ABE%E6%96%B9%E6%A1%88"><span class="toc-text">3.2. KP-ABE方案</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">1. 基于身份的加密(Identity-Based Encryption，IBE)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E7%AE%97%E6%B3%95"><span class="toc-text">1.2. 算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">2. 基于角色的访问控制(Role-Based Access Control，RBA)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1. 概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">3. 基于属性的加密(Attribute-based encryption，ABE)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%A6%82%E5%BF%B5"><span class="toc-text">3.1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-KP-ABE%E6%96%B9%E6%A1%88"><span class="toc-text">3.2. KP-ABE方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-CP-ABE"><span class="toc-text">3.3. CP-ABE</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">参考文章：</span></a></li></ol>
       
     </div>
   </div>
