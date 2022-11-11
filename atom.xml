@@ -6,7 +6,7 @@
   <link href="https://magi2b0y.github.io/atom.xml" rel="self"/>
   
   <link href="https://magi2b0y.github.io/"/>
-  <updated>2022-09-14T11:14:46.136Z</updated>
+  <updated>2022-11-02T10:06:45.308Z</updated>
   <id>https://magi2b0y.github.io/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kerberos协议学习</title>
+    <link href="https://magi2b0y.github.io/2022/11/01/Kerberos-protocol-learning/"/>
+    <id>https://magi2b0y.github.io/2022/11/01/Kerberos-protocol-learning/</id>
+    <published>2022-11-01T03:26:03.000Z</published>
+    <updated>2022-11-02T10:06:45.308Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;style&gt;
+.center 
+{
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+&lt;/style&gt;
+&lt;h1&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://magi2b0y.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSRF、SSRF和会话重放</title>
+    <link href="https://magi2b0y.github.io/2022/09/29/CSRF-and-SSRF-and-Session_replay/"/>
+    <id>https://magi2b0y.github.io/2022/09/29/CSRF-and-SSRF-and-Session_replay/</id>
+    <published>2022-09-29T02:52:15.000Z</published>
+    <updated>2022-09-29T03:53:27.154Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;1. CSRF&lt;/h1&gt;
+&lt;h2 id=&quot;1-1&quot;&gt;1.1.&lt;/h2&gt;
+&lt;h1&gt;2. SSRF&lt;/h1&gt;
+&lt;h1&gt;2.1.&lt;/h1&gt;
+&lt;h1&gt;3.</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://magi2b0y.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>渗透经验总结</title>
