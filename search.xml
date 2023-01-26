@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>学习HTTP请求包中的Content-Type参数</title>
+      <link href="/2023/01/26/Learn-Content-Type-parameter/"/>
+      <url>/2023/01/26/Learn-Content-Type-parameter/</url>
+      
+        <content type="html"><![CDATA[<style>.center {  width: auto;  display: table;  margin-left: auto;  margin-right: auto;}</style><p>HTTP 协议规定 POST 提交的数据必须放在消息主体（entity-body）中，但协议并没有规定数据必须使用什么编码方式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。但是，数据发送出去，还要服务端解析成功才有意义。一般服务端语言如 php、python 等，以及它们的 framework，都内置了自动解析常见数据格式的功能。服务端通常是根据请求头（headers）中的 Content-Type 字段来获知请求中的消息主体是用何种方式编码，再对主体进行解析。所以说到 POST 提交数据方案，包含了 Content-Type 和消息主体编码方式两部分。</p><h1>1. application/x-www-form-urlencoded</h1><p>application/x-www-urlencoded是浏览器默认的编码格式，浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据。请求如下：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST http: //www .example.com HTTP /1 .1</span><br><span class="line">Content-Type: application /x-www-form-urlencoded ;charset=utf-8</span><br><span class="line"></span><br><span class="line">title= test &amp;sub%5B%5D=1&amp;sub%5B%5D=2&amp;sub%5B%5D=3</span><br></pre></td></tr></table></figure><p>服务器知道参数用符号&amp;间隔，如果参数值中需要&amp;，则必须对其进行编码。编码格式就是application/x-www-form-urlencoded（将键值对的参数用&amp;连接起来，如果有空格，将空格转换为+加号；有特殊符号，将特殊符号转换为ASCII HEX值）。</p><p>很多时候，我们用 Ajax 提交数据时，也是使用这种方式。例如 JQuery 和 QWrap 的 Ajax，Content-Type 默认值都是「application/x-www-form-urlencoded;charset=utf-8。</p><h1>2. multipart/form-data</h1><p>使用表单上传文件时，必须让 form 的 enctyped 等于这个值。请求如下：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST http: //www .example.com HTTP /1 .1</span><br><span class="line">Content-Type:multipart /form-data ; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name= &quot;text&quot;</span><br><span class="line">title</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name= &quot;file&quot; ; filename= &quot;chrome.png&quot;</span><br><span class="line">Content-Type: image /png</span><br><span class="line"></span><br><span class="line">PNG ... content of chrome.png ...</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span><br></pre></td></tr></table></figure><p>首先生成了一个 boundary 用于分割不同的字段，为了避免与正文内容重复，boundary 很长很复杂。Content-Type 里指明了数据是以 mutipart/form-data 来编码，以及本次请求的 boundary 是什么。消息主体里按照字段个数又分为多个结构类似的部分，每部分都是以 --boundary 开始，紧接着内容描述信息，最后是字段具体内容（文本或二进制）。如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 –boundary– 标示结束。这种方式一般用来上传文件，各大服务端语言对它也有着良好的支持。</p><h1>3. application/json</h1><p>随着 json 规范的越来越流行，并且对浏览器支持程度原来越好，许多开发人员在请求头中加入 content-type: application/jsonapplication/json ，这样做可以方便的提交复杂的结构化数据。它告诉服务器请求的主体内容是 json 格式的字符串，服务器端会对json字符串进行解析，json 格式要支持比键值对复杂得多的结构化数据。这种方式的好处就是前端人员不需要关心数据结构的复杂度，只需要标准的json格式就能提交成功。当在 axios 中请求参数为普通对象时，POST 请求默认发送的是 application/json 格式的数据。请求如下：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST http: //www .example.com HTTP /1 .1</span><br><span class="line">Content-Type: application /json ;charset=utf-8</span><br><span class="line"></span><br><span class="line">&#123; &quot;title&quot; : &quot;test&quot; , &quot;sub&quot; :[1,2,3]&#125;</span><br></pre></td></tr></table></figure><h1>4. text/xml</h1><p>XML-RPC 协议是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：请求如下：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST http: //www .example.com HTTP /1 .1</span><br><span class="line">Content-Type: text /xml</span><br><span class="line"></span><br><span class="line">&lt;?xml version= &quot;1.0&quot; ?&gt;</span><br><span class="line">&lt;methodCall&gt;</span><br><span class="line">     &lt;methodName&gt;examples.getStateName&lt; /methodName &gt;</span><br><span class="line">     &lt;params&gt;</span><br><span class="line">         &lt;param&gt;</span><br><span class="line">             &lt;value&gt;&lt;i4&gt;41&lt; /i4 &gt;&lt; /value &gt;</span><br><span class="line">         &lt; /param &gt;</span><br><span class="line">     &lt; /params &gt;</span><br><span class="line">&lt; /methodCall &gt;</span><br></pre></td></tr></table></figure><p>XML-RPC 协议简单、功能够用，各种语言的实现都有。它的使用也很广泛，如 WordPress 的 XML-RPC Api，搜索引擎的 ping 服务等等。JavaScript 中，也有现成的库支持以这种方式进行数据交互，能很好的支持已有的 XML-RPC 服务。</p><p>如果 MIME 用户代理或 Web 用户代理不支持这个媒体类型，会将其视为 text/plain，当做纯文本处理。text/xml 媒体类型限制了 XML 实体中可用的编码类型（例如此时支持 UTF-8 但不支持 UTF-16，因为使用 UTF-16 编码的文本在处理 CR，LF 和 NUL 会导致异常转换）。text/xml 实体在 XML 头指定编码格式无效，必须在 HTTP 头部的 Content-Type: 中指定才会生效（例如 <code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</code> 无法设置字符集，<code>Content-Type: text/xml; charset=&quot;utf-8&quot;</code> 则可以）。没有设置字符集时默认使用 “us-ascii” 字符集。</p><hr><p>参考文章：<br><a href="https://blog.csdn.net/xiao__jia__jia/article/details/79357274">https://blog.csdn.net/xiao__jia__jia/article/details/79357274</a><br><a href="https://blog.csdn.net/weixin_40599109/article/details/113614103">https://blog.csdn.net/weixin_40599109/article/details/113614103</a><br><a href="https://www.jb51.net/web/804320.html">https://www.jb51.net/web/804320.html</a></p><hr><p>ENDฅฅ</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>利用Burpsuit的Repeater模块构造请求数据包</title>
+      <link href="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/"/>
+      <url>/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/</url>
+      
+        <content type="html"><![CDATA[<style>.center {  width: auto;  display: table;  margin-left: auto;  margin-right: auto;}</style><p>这里以通达OA 2016版的一个文件上传+文件包含漏洞为例，详细说明如何利用 Burpsuit 的 Repeater 模块构造请求数据包</p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/1.png"></div><p>通达OA是由北京通达信科科技有限公司开发的一款办公系统，攻击者可在未授权的情况下可上传图片木马文件，之后通过精心构造的请求进行文件包含，实现远程命令执行，且攻击者无须登陆认证即可完成攻击</p><p>包含漏洞的两个文件：</p><ol><li>文件上传：<code>webroot\ispirit\im\upload.php</code></li><li>文件包含：<code>webroot\ispirit\interface\gateway.php</code></li></ol><p>首先在 Reaperter 模块复制目标URL：<code>http://192.168.227.129/ispirit/im/upload.php</code>，右键点击<code>Paste URL as request</code></p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/2.png"></div><p>继续右键点击<code>Change request method</code>，将GET方法改为POST方法</p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/3.png"></div><p>Send之后会显示<code>-ERR 用户未登录</code></p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/4.png"></div><p>添加以下参数</p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/5.png"></div><p>右键点击<code>Change body encoding</code>，将 Content-Type 修改为<code>Content-Type:multipart/form-data; boundary=XXX</code></p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/6.png"></div><p><strong>PS</strong>：关于不同的 Content-Type，可以查看另一篇文章</p><p>在POST数据后面后面继续添加要上传的文件内容，Send后成功返回OK</p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/7.png"></div><p>成功上传图片。通达OA默认上传位置：<code>myoa/attach/im</code>，则上面的完整路劲为:<code>myoa/attach/im/2301/1277314394.jpg</code></p><p>复制URL：<code>http://192.168.227.129/ispirit/interface/gateway.php</code> ,构造POST请求包，进行文件包含操作，解析出一句话木马，payload为<code>json=&#123;&quot;url&quot;:&quot;/general/../../attach/im/2301/1277314394.jpg&quot;&#125;</code>，成功解析</p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/8.png"></div><p>解析后的木马文件的位置为<code>http://192.168.227.129/ispirit/interface/bbskali.php</code>，蚁剑连接</p><div class="center"><img src="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/9.png"></div><hr><p><strong>参考文章</strong>：<br><a href="https://www.adminxe.com/1003.html">https://www.adminxe.com/1003.html</a><br><a href="https://cloud.tencent.com/developer/article/1921368">https://cloud.tencent.com/developer/article/1921368</a><br><a href="https://www.cnblogs.com/Article-kelp/p/14726217.html">https://www.cnblogs.com/Article-kelp/p/14726217.html</a></p><hr><p>ENDฅฅ</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 漏洞挖掘 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Kerberos协议学习</title>
       <link href="/2022/11/01/Kerberos-protocol-learning/"/>
       <url>/2022/11/01/Kerberos-protocol-learning/</url>
@@ -51,7 +89,7 @@
       
       <categories>
           
-          <category> 网络安全 </category>
+          <category> 漏洞挖掘 </category>
           
       </categories>
       
@@ -89,7 +127,7 @@
       
       <categories>
           
-          <category> 网络安全 </category>
+          <category> 漏洞挖掘 </category>
           
       </categories>
       
