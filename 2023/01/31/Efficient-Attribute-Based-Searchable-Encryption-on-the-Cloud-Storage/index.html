@@ -182,23 +182,53 @@
 <p>In our scheme, we use inverted index structure as introduced above and implement searchable encryption with AND gate as access control. The scheme consists of 5 main algorithms. We introduce them in detail as below:</p>
 <h2 id="Init">Init</h2>
 <p>We suppose all the attributes are included in set $U=\lbrace attr_1,attr_2,···,attr_n \rbrace$, where n is the size of $U$. For each attribute $attr_i(1 \le i \le n)$, there has 2 values $v_i$ and $\neg v_i$. If the attributes set $Attr$ of one data user include attribute $attr_i(1 \le i \le n)$, the value of $attr_i$ is $v_i$ and the value of $attr_i$ is $\neg v_i$ if $attr_i$ is not in $Attr$. To formalize the description of attributes, we adopt the value of attribute to represent whether user’s set contains this attribute.</p>
-<p><strong>分析</strong>：该段用于初始化用户属性集合，将用户总体属性集合$U=\lbrace attr_1, attr_2, ··· , attr_n \rbrace$中存在的属性置为$v_i$，而不存在的属性置为$\neg v_i$，举个例子就是用户$A$的属性集合为$U=\lbrace v_1, \neg v_2, ··· , v_n \rbrace$。</p>
+<h3 id="分析：">分析：</h3>
+<p>该段用于初始化用户属性集合，将用户总体属性集合$U=\lbrace attr_1, attr_2, ··· , attr_n \rbrace$中存在的属性置为$v_i$，而不存在的属性置为$\neg v_i$，举个例子就是用户$A$的属性集合为$U=\lbrace v_1, \neg v_2, ··· , v_n \rbrace$。</p>
+<hr>
 <h2 id="Setup">Setup</h2>
 <p>Given a bilinear group $e : G \times G \to G_T$ , $p$ as prime order of $G$ and $G_T$ , and $H : {\lbrace 0, 1 \rbrace}^* \to Z_p$ as an one-way hash function, randomly select three numbers $a, b, c \gets Z_p$, a set $\lbrace r_1, r_2, · · · , r_{2n}\rbrace \gets Z_p$ and a set $\lbrace x_1, x_2, · · · , x_{2n} \rbrace \gets G$. Set $u_i = g ^ {-r_i}$ and $y_i = e(x_i, g)$, where $1 \le i \le 2n$. Then, output the public key $pk = (g, g^a, g^b, g^c, (u_i, y_i)|1 \le i \le 2n)$ and the master key $msk = (a, b, c, (r_i, x_i)|1 \le i \le 2n)$.</p>
-<p><strong>分析</strong>：这一步是初始化公钥$pk$和主密钥$msk$。双线性映射定义了两个素数p阶群乘法循环群$G$，$G_T$，循环群的意思是，群$G$中的每一个元素都是$G$中某一个固定元素q的乘方。$e : G \times G \to G_T$表示分别从循环群$G$中提取元素，并进行某种运算可以得到$G_T$中的元素，这里的e就是映射算法。$H : {\lbrace 0, 1 \rbrace}^* \to Z_p$，即一个散列函数，它将有限长度的二进制字符串作为输入，并输出素数p阶循环群的一个元素。从 $Z_p$ 群和 $G$ 群中随机挑选三个元素$a,b,c$和两个集合$\lbrace r_1, r_2, · · · , r_{2n}\rbrace, \lbrace x_1, x_2, · · · , x_{2n} \rbrace$，集合$u_i = g ^ {-r_i}$，集合$y_i = e(x_i, g)$，其中，$g$ 是$G$群中的随机元素，综上构成公钥$pk = (g, g^a, g^b, g^c, (u_i, y_i)|1 \le i \le 2n)$ 和主密钥 $msk = (a, b, c, (r_i, x_i)|1 \le i \le 2n)$。</p>
+<h3 id="分析：-v2">分析：</h3>
+<p>这一步是初始化公钥$pk$和主密钥$msk$。双线性映射定义了两个素数p阶群乘法循环群$G$，$G_T$，循环群的意思是，群$G$中的每一个元素都是$G$中某一个固定元素q的乘方。$e : G \times G \to G_T$表示分别从循环群$G$中提取元素，并进行某种运算可以得到$G_T$中的元素，这里的e就是映射算法。$H : {\lbrace 0, 1 \rbrace}^* \to Z_p$，即一个散列函数，它将有限长度的二进制字符串作为输入，并输出素数p阶循环群的一个元素。从 $Z_p$ 群和 $G$ 群中随机挑选三个元素$a,b,c$和两个集合$\lbrace r_1, r_2, · · · , r_{2n}\rbrace, \lbrace x_1, x_2, · · · , x_{2n} \rbrace$，集合$u_i = g ^ {-r_i}$，集合$y_i = e(x_i, g)$，其中，$g$ 是$G$群中的随机元素，综上构成公钥$pk = (g, g^a, g^b, g^c, (u_i, y_i)|1 \le i \le 2n)$ 和主密钥 $msk = (a, b, c, (r_i, x_i)|1 \le i \le 2n)$。</p>
+<hr>
 <h2 id="Enc">Enc</h2>
-<p>Choose random $t_1, t_2 \in Z_p$. Suppose the access policy structure $S = \bigwedge_{v^{'}<em>i \in U} v_i $, where $v’<em>i = v_i\ or\ \neg v_i$. Set $u’</em> i = u_i$ if $v’<em>i = v_i$, $u’<em>i = u</em>{i+n}$ otherwise. Compute $u</em>{gate} = g^{t_2} \prod</em>{i=1}^n{u’<em>i} $. For each keyword $w \in WD$, then set $W’ = g^{ct_1} $, $W = g<sup>{a(t_1+t_2)}g</sup>{bH(w)t_1} $, and encrypt files $F$ which associate with the keyword $w$ with some symmetric encryption algorithm into $cphF$ . Obviously, $cphW = (W’, W, u</em>{gate})$. Then, the whole $cph = (cphW, cphF)$ as the result of encryption.</p>
-<p><strong>分析</strong>：这一步是加密索引。从$Z_p$群中选取两个随机数$t_1,t_2$。设置访问策略$S$，设置集合$u’<em>i$的值（如果$v’<em>i=v_i$，那么 $u’<em>i = u_i$，否则$u’<em>i = u</em>{i+n}$），根据$u</em>{gate} = g^{t_2} \prod</em>{i=1}^n{u’<em>i}$ 来计算$u</em>{gate}$，根据索引$w,t_1,t_2,g,a,b$ 来计算 $W’ = g^{ct_1} $ 和 $W = g<sup>{a(t_1+t_2)}g</sup>{bH(w)t_1}$。与索引对应的文件通过对称密码进行加密，密文为$cphF$，所以整体密文为$cphW =  (cphW, cphF) = ((W’, W, u</em>{gate}),cphF)$。</p>
+<div>
+Choose random $t_1, t_2 \in Z_p$. Suppose the access policy structure $S = \bigwedge_{v_i \in U} v'_i $, where $v'_i = v_i$ or $\neg v_i$. Set  $u_i' = u_i $  if $v_i' = v_i$, $u_i' = u_{i+n}$ otherwise. Compute $u_{gate} = g^{t_2} \prod_{i=1}^n{u'_i} $. For each keyword $w \in WD$, then set $W' = g^{ct_1} $, $W = g^{a(t_1+t_2)}g^{bH(w)t_1} $, and encrypt files $F$ which associate with the keyword $w$ with some symmetric encryption algorithm into $cphF$ . Obviously, $cphW = (W', W, u_{gate})$. Then, the whole $cph = (cphW, cphF)$ as the result of encryption. 
+</div>
+<h3 id="分析：-v3">分析：</h3>
+<div>
+这一步是加密索引。从$Z_p$群中选取两个随机数$t_1,t_2$。设置访问策略$S$，设置集合$u'_i$的值（如果$v'_i=v_i$，那么 $u'_i = u_i$，否则$u'_i = u_{i+n}$），根据$u_{gate} = g^{t_2} \prod_{i=1}^n{u'_i}$ 来计算$u_{gate}$，根据索引$w,t_1,t_2,g,a,b$ 来计算 $W' = g^{ct_1} $ 和 $W = g^{a(t_1+t_2)}g^{bH(w)t_1}$。与索引对应的文件通过对称密码进行加密，密文为$cphF$，所以整体密文为$cphW =  (cphW, cphF) = ((W', W, u_{gate}),cphF)$。
+</div>
+<hr>
 <h2 id="KeyGen">KeyGen</h2>
-<p>At First, we set $v = g^{ac}$. For each attribute $v_i^<em>$ in data user’s attribute collection, set $y_i^</em> = y_i$ if $v_i^* = v_i$, $y_i^* = y_{i+n}$ otherwise. Similarly, compute $\sigma_i^* = x_i v^{r_i}$ if $v_i^* = v_i$, $\sigma_i^* = x_{i+n} v^{r_{i+n}}$ otherwise. Set $\sigma_{user} = \prod^n_{i=1} \sigma_i^<em>$ Then, the secret key $sk = (y_{user} = \prod^n_{i=1} y_i^</em>, &lt; v, \sigma_{user} &gt;)$.</p>
-<p><strong>分析</strong>：这一步是关于文件搜索者生成自身私钥的步骤。自定义$v = g<sup>{ac}$。对于文件搜索者自身拥有的属性，如果$v_i</sup>* = v_i$，那么$y_i^* = y_i$，$\sigma_i^* = x_i v^{r_i}$，否则就 $y_i^* = y_{i+n}$，$\sigma_i^* = x_{i+n} v^{r_{i+n}}$。根据$\sigma_{user} = \prod^n_{i=1} \sigma_i^<em>$来计算$\sigma_{user}$，最后得出文件搜索者的私钥$sk = (y_{user} = \prod^n_{i=1} y_i^</em>, &lt; v, \sigma_{user} &gt;)$。</p>
+<div>
+At First, we set $v = g^{ac}$. For each attribute $v_i^*$ in data user's attribute collection, set $y_i^* = y_i$ if $v_i^* = v_i$, $y_i^* = y_{i+n}$ otherwise. Similarly, compute $\sigma_i^* = x_i v^{r_i}$ if $v_i^* = v_i$, $\sigma_i^* = x_{i+n} v^{r_{i+n}}$ otherwise. Set $\sigma_{user} = \prod^n_{i=1} \sigma_i^*$ Then, the secret key $sk = (y_{user} = \prod^n_{i=1} y_i^*, < v, \sigma_{user} >)$. 
+</div>
+<h3 id="分析：-v4">分析：</h3>
+<div>
+这一步是关于文件搜索者生成自身私钥的步骤。自定义$v = g^{ac}$。对于文件搜索者自身拥有的属性，如果$v_i^* = v_i$，那么$y_i^* = y_i$，$\sigma_i^* = x_i v^{r_i}$，否则就 $y_i^* = y_{i+n}$，$\sigma_i^* = x_{i+n} v^{r_{i+n}}$。根据$\sigma_{user} = \prod^n_{i=1} \sigma_i^*$来计算$\sigma_{user}$，最后得出文件搜索者的私钥$sk = (y_{user} = \prod^n_{i=1} y_i^*, < v, \sigma_{user} >)$。
+</div>
+<hr>
 <h2 id="TokenGen">TokenGen</h2>
-<p>Select $s \gets Zp$. To generate the search token for keyword $w$, compute $tok1 = (g<sup>ag</sup>{bH(w)})^s$，$tok2 = g^{cs}$. Therefore, the search token $tok = (y^s_{user}, &lt; v^s, \sigma^s_{user} &gt;, tok1, tok2)$.</p>
-<p><strong>分析</strong>：这一步是为关键词创建$token$。从$Z_p$群中选取一个元素$s$，计算$tok1 = (g<sup>ag</sup>{bH(w)})^s$，$tok2 = g^{cs}$，生成最终的$token$，即$tok = (y^s_{user}, &lt; v^s, \sigma^s_{user} &gt;, tok1, tok2)$。</p>
+<div>
+Select $s \gets Zp$. To generate the search token for keyword $w$, compute $tok1 = (g^ag^{bH(w)})^s$，$tok2 = g^{cs}$. Therefore, the search token $tok = (y^s_{user}, < v^s, \sigma^s_{user} >, tok1, tok2)$.
+</div>
+<h3 id="分析：-v5">分析：</h3>
+<div>
+这一步是为关键词创建 $token$ 。从 $Z_p$ 群中选取一个元素 $s$ ，计算 $tok1=(g^ag^{bH(w)})^s$ ,$tok2 = g^{cs}$，生成最终的$token$，即$tok = (y^s_{user}, < v^s, \sigma^s_{user} >, tok1, tok2)$。
+</div>
+<hr>
 <h2 id="Search">Search</h2>
-<p>At first, compute $E = \frac{e(u_{gate},v<sup>s)e(\sigma</sup>s_{user},g)}{y^s_{user}} $. If user’s attributes satisfy the access policy according to the ciphertext, $E = e(g, g)^{acst2}$ and $e(W’, tok1)E = e(W, tok2)$ holds.</p>
-<p><strong>分析</strong>：执行搜索操作。先计算 $E = \frac{e(u_{gate},v<sup>s)e(\sigma</sup>s_{user},g)}{y^s_{user}} $，如果用户属性满足访问策略，则$E = e(g, g)^{acst_2}$ 和 $e(W’, tok1)E = e(W, tok2)$成立。</p>
+<div>
+At first, compute $E = \frac{e(u_{gate},v^s)e(\sigma^s_{user},g)}{y^s_{user}} $. If user's attributes satisfy the access policy according to the ciphertext, $E = e(g, g)^{acst2}$ and $e(W', tok1)E = e(W, tok2)$ holds. 
+</div>
+<h3 id="分析：-v6">分析：</h3>
+<div>
+执行搜索操作。先计算 $E = \frac{e(u_{gate},v^s)e(\sigma^s_{user},g)}{y^s_{user}} $，如果用户属性满足访问策略，则$E = e(g, g)^{acst_2}$ 和 $e(W', tok1)E = e(W, tok2)$成立。
+</div>
+<hr>
 <p>According to the above, the search token $tok$ can match with the $cphW$ in the ciphertext $cph$, if the attributes of data user can satisfy the access policy used for encrypting the keyword. The $cphF$ in cph should be downloaded afterwards and returned to the data user.</p>
+<hr>
+<p><strong>ps</strong>: Hexo中编写数学公式时，对符号 <strong>’</strong> 的支持不好，会导致转化为html中的公式无法解析，进而导致页面混乱</p>
 
       </div>
       
@@ -243,7 +273,7 @@
     <div class="title">目录</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">3.3 Constructions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Init"><span class="toc-text">Init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup"><span class="toc-text">Setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enc"><span class="toc-text">Enc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KeyGen"><span class="toc-text">KeyGen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TokenGen"><span class="toc-text">TokenGen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search"><span class="toc-text">Search</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">3.3 Constructions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Init"><span class="toc-text">Init</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-text">分析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Setup"><span class="toc-text">Setup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%EF%BC%9A-v2"><span class="toc-text">分析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enc"><span class="toc-text">Enc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%EF%BC%9A-v3"><span class="toc-text">分析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KeyGen"><span class="toc-text">KeyGen</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%EF%BC%9A-v4"><span class="toc-text">分析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TokenGen"><span class="toc-text">TokenGen</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%EF%BC%9A-v5"><span class="toc-text">分析：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search"><span class="toc-text">Search</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%EF%BC%9A-v6"><span class="toc-text">分析：</span></a></li></ol></li></ol></li></ol>
       
     </div>
   </div>
@@ -536,5 +566,23 @@
 
       </div>
     </div>
-  </body>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+
+</body>
 </html>
