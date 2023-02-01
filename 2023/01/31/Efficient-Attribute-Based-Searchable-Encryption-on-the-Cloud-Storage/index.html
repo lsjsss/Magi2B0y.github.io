@@ -118,7 +118,7 @@
   <!-- LaTex Display -->
 
   
-    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
   
   <script>
     MathJax = {
@@ -181,7 +181,7 @@
 <h1>3.3 Constructions</h1>
 <p>In our scheme, we use inverted index structure as introduced above and implement searchable encryption with AND gate as access control. The scheme consists of 5 main algorithms. We introduce them in detail as below:</p>
 <h2 id="Init">Init</h2>
-<p>We suppose all the attributes are included in set $U=\left{attr_1,attr_2,···,attr_n\right}$, where n is the size of $U$. For each attribute $attr_i(1 \le i \le n)$, there has 2 values $v_i$ and $\neg v_i$. If the attributes set $Attr$ of one data user include attribute $attr_i(1 \le i \le n)$, the value of $attr_i$ is $v_i$ and the value of $attr_i$ is $\neg v_i$ if $attr_i$ is not in $Attr$. To formalize the description of attributes, we adopt the value of attribute to represent whether user’s set contains this attribute.</p>
+<p>We suppose all the attributes are included in set $U={attr_1,attr_2,···,attr_n}$, where n is the size of $U$. For each attribute $attr_i(1 \le i \le n)$, there has 2 values $v_i$ and $\neg v_i$. If the attributes set $Attr$ of one data user include attribute $attr_i(1 \le i \le n)$, the value of $attr_i$ is $v_i$ and the value of $attr_i$ is $\neg v_i$ if $attr_i$ is not in $Attr$. To formalize the description of attributes, we adopt the value of attribute to represent whether user’s set contains this attribute.</p>
 <p><strong>分析</strong>：该段用于初始化用户属性集合，将用户总体属性集合$U={attr_1, attr_2, ··· , attr_n}$中存在的属性置为$v_i$，而不存在的属性置为$\neg v_i$，举个例子就是用户$A$的属性集合为$U={v_1, \neg v_2, ··· , v_n}$。</p>
 <h2 id="Setup">Setup</h2>
 <p>Given a bilinear group $e : G \times G \to G_T$ , $p$ as prime order of $G$ and $G_T$ , and $H : {0, 1 }^* \to Z_p$ as an one-way hash function, randomly select three numbers $a, b, c \gets Z_p$, a set ${r_1, r_2, · · · , r_{2n}} \gets Z_p$ and a set ${x_1, x_2, · · · , x_{2n}} \gets G$. Set $u_i = g ^ {-r_i}$ and $y_i = e(x_i, g)$, where $1 \le i \le 2n$. Then, output the public key $pk = (g, g^a, g^b, g^c, (u_i, y_i)|1 \le i \le 2n)$ and the master key $msk = (a, b, c, (r_i, x_i)|1 \le i \le 2n)$.</p>
