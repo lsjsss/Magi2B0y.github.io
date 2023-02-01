@@ -200,35 +200,22 @@ Choose random $t_1, t_2 \in Z_p$. Suppose the access policy structure $S = \bigw
 </div>
 <hr>
 <h2 id="KeyGen">KeyGen</h2>
-<div>
-At First, we set $v = g^{ac}$. For each attribute $v_i^*$ in data user's attribute collection, set $y_i^* = y_i$ if $v_i^* = v_i$, $y_i^* = y_{i+n}$ otherwise. Similarly, compute $\sigma_i^* = x_i v^{r_i}$ if $v_i^* = v_i$, $\sigma_i^* = x_{i+n} v^{r_{i+n}}$ otherwise. Set $\sigma_{user} = \prod^n_{i=1} \sigma_i^*$ Then, the secret key $sk = (y_{user} = \prod^n_{i=1} y_i^*, < v, \sigma_{user} >)$. 
-</div>
+<p>At First, we set $v = g^{ac}$. For each attribute $v_i^<em>$ in data user’s attribute collection, set $y_i^</em> = y_i$ if $v_i^* = v_i$, $y_i^* = y_{i+n}$ otherwise. Similarly, compute $\sigma_i^* = x_i v^{r_i}$ if $v_i^* = v_i$, $\sigma_i^* = x_{i+n} v^{r_{i+n}}$ otherwise. Set $\sigma_{user} = \prod^n_{i=1} \sigma_i^<em>$ Then, the secret key $sk = (y_{user} = \prod^n_{i=1} y_i^</em>, &lt; v, \sigma_{user} &gt;)$.</p>
 <h3 id="分析：-v4">分析：</h3>
-<div>
-这一步是关于文件搜索者生成自身私钥的步骤。自定义$v = g^{ac}$。对于文件搜索者自身拥有的属性，如果$v_i^* = v_i$，那么$y_i^* = y_i$，$\sigma_i^* = x_i v^{r_i}$，否则就 $y_i^* = y_{i+n}$，$\sigma_i^* = x_{i+n} v^{r_{i+n}}$。根据$\sigma_{user} = \prod^n_{i=1} \sigma_i^*$来计算$\sigma_{user}$，最后得出文件搜索者的私钥$sk = (y_{user} = \prod^n_{i=1} y_i^*, < v, \sigma_{user} >)$。
-</div>
+<p>这一步是关于文件搜索者生成自身私钥的步骤。自定义$v = g<sup>{ac}$。对于文件搜索者自身拥有的属性，如果$v_i</sup>* = v_i$，那么$y_i^* = y_i$，$\sigma_i^* = x_i v^{r_i}$，否则就 $y_i^* = y_{i+n}$，$\sigma_i^* = x_{i+n} v^{r_{i+n}}$。根据$\sigma_{user} = \prod^n_{i=1} \sigma_i^<em>$来计算$\sigma_{user}$，最后得出文件搜索者的私钥$sk = (y_{user} = \prod^n_{i=1} y_i^</em>, &lt; v, \sigma_{user} &gt;)$。</p>
 <hr>
 <h2 id="TokenGen">TokenGen</h2>
-<div>
-Select $s \gets Zp$. To generate the search token for keyword $w$, compute $tok1 = (g^ag^{bH(w)})^s$，$tok2 = g^{cs}$. Therefore, the search token $tok = (y^s_{user}, < v^s, \sigma^s_{user} >, tok1, tok2)$.
-</div>
+<p>Select $s \gets Zp$. To generate the search token for keyword $w$, compute $tok1 = (g<sup>ag</sup>{bH(w)})^s$，$tok2 = g^{cs}$. Therefore, the search token $tok = (y^s_{user}, &lt; v^s, \sigma^s_{user} &gt;, tok1, tok2)$.</p>
 <h3 id="分析：-v5">分析：</h3>
-<div>
-这一步是为关键词创建 $token$ 。从 $Z_p$ 群中选取一个元素 $s$ ，计算 $tok1=(g^ag^{bH(w)})^s$ ,$tok2 = g^{cs}$，生成最终的$token$，即$tok = (y^s_{user}, < v^s, \sigma^s_{user} >, tok1, tok2)$。
-</div>
+<p>这一步是为关键词创建 $token$ 。从 $Z_p$ 群中选取一个元素 $s$ ，计算 $tok1=(g<sup>ag</sup>{bH(w)})^s$ ,$tok2 = g^{cs}$，生成最终的$token$，即$tok = (y^s_{user}, &lt; v^s, \sigma^s_{user} &gt;, tok1, tok2)$。</p>
 <hr>
 <h2 id="Search">Search</h2>
-<div>
-At first, compute $E = \frac{e(u_{gate},v^s)e(\sigma^s_{user},g)}{y^s_{user}} $. If user's attributes satisfy the access policy according to the ciphertext, $E = e(g, g)^{acst2}$ and $e(W', tok1)E = e(W, tok2)$ holds. 
-</div>
+<p>At first, compute $E = \frac{e(u_{gate},v<sup>s)e(\sigma</sup>s_{user},g)}{y^s_{user}} $. If user’s attributes satisfy the access policy according to the ciphertext, $E = e(g, g)^{acst2}$ and $e(W’, tok1)E = e(W, tok2)$ holds.</p>
 <h3 id="分析：-v6">分析：</h3>
-<div>
-执行搜索操作。先计算 $E = \frac{e(u_{gate},v^s)e(\sigma^s_{user},g)}{y^s_{user}} $，如果用户属性满足访问策略，则$E = e(g, g)^{acst_2}$ 和 $e(W', tok1)E = e(W, tok2)$成立。
-</div>
-<hr>
+<p>执行搜索操作。先计算 $E = \frac{e(u_{gate},v<sup>s)e(\sigma</sup>s_{user},g)}{y^s_{user}} $，如果用户属性满足访问策略，则$E = e(g, g)^{acst_2}$ 和 $e(W’, tok1)E = e(W, tok2)$成立。</p>
 <p>According to the above, the search token $tok$ can match with the $cphW$ in the ciphertext $cph$, if the attributes of data user can satisfy the access policy used for encrypting the keyword. The $cphF$ in cph should be downloaded afterwards and returned to the data user.</p>
 <hr>
-<p><strong>ps</strong>: Hexo中编写数学公式时，对符号 <strong>’</strong> 的支持不好，会导致转化为html中的公式无法解析，进而导致页面混乱</p>
+<p><strong>ps</strong>: Hexo中编写数学公式时，对符号 <strong>’</strong> 的支持不好，会导致转化为html中的公式无法解析，进而导致页面混乱。</p>
 
       </div>
       
@@ -566,23 +553,5 @@ At first, compute $E = \frac{e(u_{gate},v^s)e(\sigma^s_{user},g)}{y^s_{user}} $.
 
       </div>
     </div>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-
-</body>
+  </body>
 </html>
