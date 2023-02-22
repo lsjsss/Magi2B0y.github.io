@@ -11,6 +11,11 @@
   
   <title>
     
+      git学习 
+      
+      
+      |
+    
      Hexo
   </title>
 
@@ -106,148 +111,220 @@
 
 
       <div class="flex-container">
-        <div class="container index">
-  <div class="post-list">
-    <!-- 遍历渲染文章 -->
-    
-      <div class="post-item" title="重新认识SQL注入">
-        <div class="time-m-d">2023-02-18</div>
-        <div class="title">
-          <a href="/2023/02/18/Relearn-sql-injection/">
-            
-              
-                <span>重新认识SQL注入</span>
-              
-            
-          </a>
-        </div>
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">git学习</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="更新时间"></i>
+          2023-02-15 11:45:42
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="基础知识">
+                    <b>#</b> 基础知识
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
-    
-      <div class="post-item" title="git学习">
-        <div class="time-m-d">2023-02-15</div>
-        <div class="title">
-          <a href="/2023/02/15/git-learn/">
-            
-              
-                <span>git学习</span>
-              
-            
-          </a>
-        </div>
+      <div class="markdown-body">
+        <h1>1. pull request 同步原仓库</h1>
+<ol>
+<li>
+<p>创建分支：<code>git branch test/update-readme</code></p>
+</li>
+<li>
+<p>切换分支：<code>git checkout test/update-readme</code></p>
+</li>
+</ol>
+<blockquote>
+<p>前两行代码可合并为 git checkout -b test/update-readme</p>
+</blockquote>
+<ol start="3">
+<li>查看远程分支状态：<code>git remote -v </code></li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">origin  git@github.com:dengjiawen8955/pr-test.git (fetch)</span><br><span class="line">origin  git@github.com:dengjiawen8955/pr-test.git (push)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>
+<p>添加一个新的upstream 分支 指向「原仓库」地址：<code>git remote add upstream https://github.com/bmft-team/pr-test.git</code></p>
+</li>
+<li>
+<p>确认是否添加成功：<code>git remote -v</code></p>
+</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">origin  git@github.com:dengjiawen8955/pr-test.git (fetch)</span><br><span class="line">origin  git@github.com:dengjiawen8955/pr-test.git (push)</span><br><span class="line">upstream        https://github.com/bmft-team/pr-test.git (fetch)</span><br><span class="line">upstream        https://github.com/bmft-team/pr-test.git (push)</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>从「原仓库」拉取最新的代码：<code>git fetch upstream</code></li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">remote: Enumerating objects: 6, done.</span><br><span class="line">remote: Counting objects: 100% (6/6), done.</span><br><span class="line">remote: Compressing objects: 100% (3/3), done.</span><br><span class="line">remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (4/4), 1.33 KiB | 47.00 KiB/s, done.</span><br><span class="line">From https://github.com/bmft-team/pr-test</span><br><span class="line"> * [new branch]      master     -&gt; upstream/master </span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>查看自己所在的分支：<code>git branch</code></li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  master</span><br><span class="line">* test/update-readme</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>合并 upstream 分支到 master 分支：<code>git merge upstream/master</code></li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Updating e2b016c..774d228</span><br><span class="line">Fast-forward</span><br><span class="line"> API.md | 1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 API.md</span><br></pre></td></tr></table></figure>
+<ol start="9">
+<li>将 master 分支合并到 test/update-readme 分支（此时你的分支为test/update-readme）：<code>git merge master</code></li>
+</ol>
+<blockquote>
+<p>6 7 8 9 步骤可以合并为一步 git pull upstream upstream的x分支<br>
+含义: 将远程upstream仓库的x分支合并到当前分支</p>
+</blockquote>
+<ol start="10">
+<li>提交代码</li>
+</ol>
+<p><code>git add .</code><br>
+<code>git commit -m &quot;update README.md and sync the source repository&quot;</code><br>
+<code>git push origin test/update-readme</code></p>
+<p>ps:<br>
+<code>git branch -a  //查看本地分支及远程分支</code><br>
+<code>git branch -D featuer   //删除本地 featuer 分支</code></p>
+<h1>2. git 配置全局设置</h1>
+<p>配置http代理</p>
+<p><code>git config --global http.proxy 127.0.0.1:7890</code><br>
+<code>git config --global https.proxy 127.0.0.1:7890</code></p>
+<p>取消配置http代理</p>
+<p><code>git config --global --unset http.proxy</code><br>
+<code>git config --global --unset https.proxy</code></p>
+<p>配置socks5代理</p>
+<p><code>git config --global http.proxy socks5 127.0.0.1:7890</code><br>
+<code>git config --global https.proxy socks5 127.0.0.1:7890</code></p>
+<h1>3. 更改 github 账号后 push 出现的问题</h1>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Enumerating objects: 12, done.</span><br><span class="line">Counting objects: 100% (12/12), done.</span><br><span class="line">Delta compression using up to 16 threads</span><br><span class="line">Compressing objects: 100% (7/7), done.</span><br><span class="line">Writing objects: 100% (9/9), 301.45 KiB | 30.14 MiB/s, done.</span><br><span class="line">Total 9 (delta 1), reused 1 (delta 0), pack-reused 0</span><br><span class="line">remote: Resolving deltas: 100% (1/1), completed with 1 local object.</span><br><span class="line">To https://github.com/Thunderinmoonlight/diSE.git</span><br><span class="line"> ! [remote rejected] main -&gt; main (permission denied)</span><br><span class="line">error: failed to push some refs to &#x27;https://github.com/Thunderinmoonlight/diSE.git&#x27;</span><br></pre></td></tr></table></figure>
+<p>切换账号信息</p>
+<p><code>git config --global user.name &quot;xxx&quot; //切换用户名</code><br>
+<code>git config --global user.email &quot;xxx&quot; //切换邮箱</code><br>
+<code>git config user.name //查看用户名</code></p>
+<p>配置凭据以使用完整的存储库路径(而不是仅使用默认设置-域)</p>
+<p><code>git config --global credential.useHttpPath true</code></p>
+<p>之后出现的弹窗按要求操作即可完成push</p>
+<h1>4. git 回滚操作</h1>
+<p><code>git log  //查看提交历史，找出要回滚到的commit-id</code><br>
+<code>git reset --hard commit-id</code>  或者  <code>git reset --hard HEAD~1  //将最近1次的提交回滚</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--hard      清空所有修改,删除本地数据</span><br><span class="line">--soft      将之前提交的内容恢复到暂存区,不会修改本地文件</span><br><span class="line">--mixed     将之前提交的内容恢复到未暂存状态,不会修改本地文件 (默认)</span><br></pre></td></tr></table></figure>
+<p>此时本地代码落后于远程代码，如果需要将回滚后的本地代码Push到远程代码仓，需要使用–force以强制Push到远程代码仓<br>
+<code>git push --force  </code></p>
+<blockquote>
+<p>其他的用到再做笔记</p>
+</blockquote>
+<hr>
+<h1>参考文章：</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jarvan5/article/details/111387361">https://blog.csdn.net/jarvan5/article/details/111387361</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/QH_JAVA/article/details/77969010">https://blog.csdn.net/QH_JAVA/article/details/77969010</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34821328/article/details/115126422">https://blog.csdn.net/qq_34821328/article/details/115126422</a></p>
+
       </div>
-    
-      <div class="post-item" title="论文学习(Efficient Attribute-Based Searchable Encryption on the Cloud Storage)">
-        <div class="time-m-d">2023-01-31</div>
-        <div class="title">
-          <a href="/2023/01/31/Efficient-Attribute-Based-Searchable-Encryption-on-the-Cloud-Storage/">
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
             
-              
-                <span>论文学习(Efficient Attribute-Based Searchable Encryption on the Cloud Storage)</span>
-              
+              <a href="/2023/01/31/Efficient-Attribute-Based-Searchable-Encryption-on-the-Cloud-Storage/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
             
-          </a>
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="更新时间"></i>
+              2023-02-15 11:45:42
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="基础知识">
+                        <b>#</b> 基础知识
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2023/02/18/Relearn-sql-injection/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
         </div>
-      </div>
+      
+    </div>
     
-      <div class="post-item" title="学习HTTP请求包中的Content-Type参数">
-        <div class="time-m-d">2023-01-26</div>
-        <div class="title">
-          <a href="/2023/01/26/Learn-Content-Type-parameter/">
-            
-              
-                <span>学习HTTP请求包中的Content-Type参数</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="利用Burpsuit的Repeater模块构造请求数据包">
-        <div class="time-m-d">2023-01-26</div>
-        <div class="title">
-          <a href="/2023/01/26/Construct-the-packets-by-using-repeater-module-of-Burpsuit/">
-            
-              
-                <span>利用Burpsuit的Repeater模块构造请求数据包</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Kerberos协议学习">
-        <div class="time-m-d">2022-11-01</div>
-        <div class="title">
-          <a href="/2022/11/01/Kerberos-protocol-learning/">
-            
-              
-                <span>Kerberos协议学习</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="CSRF、SSRF和会话重放">
-        <div class="time-m-d">2022-09-29</div>
-        <div class="title">
-          <a href="/2022/09/29/CSRF-and-SSRF-and-Session_replay/">
-            
-              
-                <span>CSRF、SSRF和会话重放</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="渗透经验总结">
-        <div class="time-m-d">2022-09-02</div>
-        <div class="title">
-          <a href="/2022/09/02/Penetration-experience-summary/">
-            
-              
-                <span>渗透经验总结</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="利用python重构NMAP的服务版本扫描模块">
-        <div class="time-m-d">2022-08-29</div>
-        <div class="title">
-          <a href="/2022/08/29/NMAP-of-Python-refactoring/">
-            
-              
-                <span>利用python重构NMAP的服务版本扫描模块</span>
-              
-            
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="常用攻击工具命令">
-        <div class="time-m-d">2022-08-20</div>
-        <div class="title">
-          <a href="/2022/08/20/Common-attack-tools-Commands/">
-            
-              
-                <span>常用攻击工具命令</span>
-              
-            
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">1. pull request 同步原仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">2. git 配置全局设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">3. 更改 github 账号后 push 出现的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">4. git 回滚操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">参考文章：</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
   </div>
-  <nav class="post-navigation">
-    
-    <span class="page-num">1 / 2</span>    
-      <a href="/page/2/"><i class="iconfont icon-angleright"></i></a>
-    
-  </nav>
-</div>
+
 
         
 <div class="footer">
@@ -501,6 +578,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + git%E5%AD%A6%E4%B9%A0 + '&url=' + https%3A%2F%2Fmagi2b0y.github.io%2F2023%2F02%2F15%2Fgit-learn%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://magi2b0y.github.io/2023/02/15/git-learn/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
