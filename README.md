@@ -1,3 +1,3 @@
-# :star2: Hello, welcome to my blog :star2:
-
-https://magi2b0y.github.io/
+# Hi, welcome to my blog 👏
+# I'm glad to share my knowledge with anyone who want to know! ❤
+# My Blog address is [HERE](http://Magi2B0y.github.io) 👀

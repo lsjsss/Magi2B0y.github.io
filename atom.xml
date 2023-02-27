@@ -6,7 +6,7 @@
   <link href="https://magi2b0y.github.io/atom.xml" rel="self"/>
   
   <link href="https://magi2b0y.github.io/"/>
-  <updated>2023-02-21T03:11:52.040Z</updated>
+  <updated>2023-02-27T16:09:11.236Z</updated>
   <id>https://magi2b0y.github.io/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习文件包含漏洞</title>
+    <link href="https://magi2b0y.github.io/2023/02/27/learn-file-include-vulnerability/"/>
+    <id>https://magi2b0y.github.io/2023/02/27/learn-file-include-vulnerability/</id>
+    <published>2023-02-27T15:21:17.000Z</published>
+    <updated>2023-02-27T16:09:11.236Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;1.文件包含漏洞条件&lt;/h1&gt;
+&lt;p&gt;开发者在开发过程中，会将可以重复利用的函数或代码块写入到单个文件当中，在使用某些函数时，直接调用对应即可，无需再次编写，这种调用文件的过程称之为文件包含&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;包含文件时采用动态包含的方式&lt;/li&gt;
+&lt;li&gt;对于包</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://magi2b0y.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>域内基本信息查询及操作</title>
+    <link href="https://magi2b0y.github.io/2023/02/25/Querying-and-operating-basic-information-in-a-domain/"/>
+    <id>https://magi2b0y.github.io/2023/02/25/Querying-and-operating-basic-information-in-a-domain/</id>
+    <published>2023-02-25T12:40:03.000Z</published>
+    <updated>2023-02-25T16:48:00.514Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;1. 判断当前所在域&lt;/h1&gt;
+&lt;p&gt;查看计算机名、全名、用户名、系统版本、工作站、域、登录域: &lt;code&gt;net config workstation&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight text&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://magi2b0y.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>学习文件上传漏洞</title>
+    <link href="https://magi2b0y.github.io/2023/02/25/learn-file-upload-vulnerability/"/>
+    <id>https://magi2b0y.github.io/2023/02/25/learn-file-upload-vulnerability/</id>
+    <published>2023-02-25T02:11:05.000Z</published>
+    <updated>2023-02-27T13:14:00.447Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;1.文件上传漏洞条件&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;上传文件的名称、后缀名、内容用户可以自定义设置；&lt;/li&gt;
+&lt;li&gt;上传文件的路径可以获取；&lt;/li&gt;
+&lt;li&gt;上传文件所在文件夹具备可执行权限；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;2. Bypass</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://magi2b0y.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>重新认识SQL注入</title>
