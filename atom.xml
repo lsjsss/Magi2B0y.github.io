@@ -6,7 +6,7 @@
   <link href="https://magi2b0y.github.io/atom.xml" rel="self"/>
   
   <link href="https://magi2b0y.github.io/"/>
-  <updated>2023-02-27T16:09:11.236Z</updated>
+  <updated>2023-03-02T13:55:28.231Z</updated>
   <id>https://magi2b0y.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>分组密码的工作模式</title>
+    <link href="https://magi2b0y.github.io/2023/03/02/Working-mode-of-block-password/"/>
+    <id>https://magi2b0y.github.io/2023/03/02/Working-mode-of-block-password/</id>
+    <published>2023-03-02T12:00:47.000Z</published>
+    <updated>2023-03-02T13:55:28.231Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;1. 电子密码本ECB (electronic codebook mode)&lt;/h1&gt;
+&lt;p&gt;在ECB模式中，将明文分组加密之后的结果将直接成为密文分组。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="基础知识" scheme="https://magi2b0y.github.io/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>学习文件包含漏洞</title>
     <link href="https://magi2b0y.github.io/2023/02/27/learn-file-include-vulnerability/"/>
     <id>https://magi2b0y.github.io/2023/02/27/learn-file-include-vulnerability/</id>
     <published>2023-02-27T15:21:17.000Z</published>
-    <updated>2023-02-27T16:09:11.236Z</updated>
+    <updated>2023-02-28T13:00:51.471Z</updated>
     
     
       
@@ -48,7 +73,7 @@
     <link href="https://magi2b0y.github.io/2023/02/25/Querying-and-operating-basic-information-in-a-domain/"/>
     <id>https://magi2b0y.github.io/2023/02/25/Querying-and-operating-basic-information-in-a-domain/</id>
     <published>2023-02-25T12:40:03.000Z</published>
-    <updated>2023-02-25T16:48:00.514Z</updated>
+    <updated>2023-03-09T16:25:38.939Z</updated>
     
     
       
@@ -57,7 +82,7 @@
         
     <summary type="html">&lt;h1&gt;1. 判断当前所在域&lt;/h1&gt;
 &lt;p&gt;查看计算机名、全名、用户名、系统版本、工作站、域、登录域: &lt;code&gt;net config workstation&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight text&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+&lt;p&gt;&lt;img</summary>
         
       
     
@@ -73,7 +98,7 @@
     <link href="https://magi2b0y.github.io/2023/02/25/learn-file-upload-vulnerability/"/>
     <id>https://magi2b0y.github.io/2023/02/25/learn-file-upload-vulnerability/</id>
     <published>2023-02-25T02:11:05.000Z</published>
-    <updated>2023-02-27T13:14:00.447Z</updated>
+    <updated>2023-03-05T02:24:32.896Z</updated>
     
     
       
